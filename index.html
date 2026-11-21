@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#F9F3FF">
+    <title>Sweet Date | 我们的专属约会</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="sparkles" aria-hidden="true">✦　♡　✧　♡　✦</div>
+
+<!-- 首页 -->
+<section id="welcome" class="page active">
+    <div class="luxury-card welcome-card">
+        <div class="eyebrow">A SPECIAL INVITATION</div>
+        <div class="main-heart">💜</div>
+        <p class="small-title">TO MY FAVORITE PERSON</p>
+        <h1>亲爱的，</h1>
+        <h1>愿意和我约会吗？</h1>
+        <div class="gold-line"></div>
+        <p class="description">我想邀请你，和我一起创造<br>一段属于我们的美好回忆。</p>
+        <div class="invite-buttons">
+            <button class="yes-btn" onclick="acceptDate()">要！当然要 💗</button>
+            <button class="no-btn" id="noButton" type="button">不要 🙈</button>
+        </div>
+        <p class="footnote">WITH LOVE, JUST FOR YOU ♡</p>
+    </div>
+</section>
+
+<!-- 约会申请表 -->
+<section id="application" class="page">
+    <div class="luxury-card form-card">
+        <div class="eyebrow">OUR LITTLE ADVENTURE</div>
+        <h1>约会申请书</h1>
+        <p class="description">认真选择我们下一次的约会吧 ♡</p>
+        <div class="progress"><div id="progressBar"></div></div>
+        <p class="step-text" id="stepText">STEP 01 / 04</p>
+
+        <div class="form-step active-step" id="step1">
+            <div class="section-icon">🌷</div>
+            <h2>想在哪一天见面？</h2>
+            <p class="muted">选择一个你喜欢的日子</p>
+            <label for="date">约会日期</label>
+            <input type="date" id="date">
+            <button class="next-btn" onclick="nextStep(1)">下一步 →</button>
+        </div>
+
+        <div class="form-step" id="step2">
+            <div class="section-icon">🕰️</div>
+            <h2>几点钟最适合？</h2>
+            <p class="muted">我会准时赴约的！</p>
+            <label for="time">约会时间</label>
+            <input type="time" id="time">
+            <button class="next-btn" onclick="nextStep(2)">下一步 →</button>
+            <button class="back-btn" onclick="prevStep(2)">← 上一步</button>
+        </div>
+
+        <!-- 活动多选 + 图片预览 -->
+        <div class="form-step" id="step3">
+            <div class="section-icon">🌷</div>
+            <h2>想和我一起做什么？</h2>
+            <p class="muted">可以选择多个喜欢的活动哦！点击图片卡片即可选择 ♡</p>
+
+            <div class="place-category">
+                <h3>♡ 浪漫约会</h3>
+                <div class="place-grid">
+                    <button class="place" type="button" data-place="吃漂亮饭 🍽️"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=80" alt="精致餐厅"><span>🍽️ 吃漂亮饭</span></button>
+                    <button class="place" type="button" data-place="看花 🌸"><img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=700&q=80" alt="花园鲜花"><span>🌸 看花</span></button>
+                    <button class="place" type="button" data-place="海边散步 🌊"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=700&q=80" alt="海边"><span>🌊 海边散步</span></button>
+                    <button class="place" type="button" data-place="看日落 🌅"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=700&q=80" alt="日落"><span>🌅 看日落</span></button>
+                    <button class="place" type="button" data-place="野餐 🧺"><img src="https://images.unsplash.com/photo-1526285759904-71d820e4b2b4?auto=format&fit=crop&w=700&q=80" alt="野餐"><span>🧺 野餐</span></button>
+                    <button class="place" type="button" data-place="星空约会 🌙"><img src="https://images.unsplash.com/photo-1475274047050-1d0c0975c63e?auto=format&fit=crop&w=700&q=80" alt="星空"><span>🌙 星空约会</span></button>
+                </div>
+            </div>
+
+            <div class="place-category">
+                <h3>♡ 有趣体验</h3>
+                <div class="place-grid">
+                    <button class="place" type="button" data-place="DIY手工 🎨"><img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=700&q=80" alt="绘画手作"><span>🎨 DIY手工</span></button>
+                    <button class="place" type="button" data-place="陶艺体验 🏺"><img src="https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?auto=format&fit=crop&w=700&q=80" alt="陶艺"><span>🏺 陶艺体验</span></button>
+                    <button class="place" type="button" data-place="烘焙蛋糕 🧁"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80" alt="甜点烘焙"><span>🧁 烘焙蛋糕</span></button>
+                    <button class="place" type="button" data-place="做香水 🧴"><img src="https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=80" alt="香水"><span>🧴 做香水</span></button>
+                    <button class="place" type="button" data-place="情侣拍照 📸"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=700&q=80" alt="情侣拍照"><span>📸 情侣拍照</span></button>
+                    <button class="place" type="button" data-place="游乐园 🎡"><img src="https://images.unsplash.com/photo-1513883049090-d0b7439799bf?auto=format&fit=crop&w=700&q=80" alt="游乐设施"><span>🎡 游乐园</span></button>
+                </div>
+            </div>
+
+            <div class="place-category">
+                <h3>♡ 轻松休闲</h3>
+                <div class="place-grid">
+                    <button class="place" type="button" data-place="看电影 🎬"><img src="https://images.unsplash.com/photo-1489599849927-2ee91lede3ba?auto=format&fit=crop&w=700&q=80" alt="电影院"><span>🎬 看电影</span></button>
+                    <button class="place" type="button" data-place="咖啡厅 ☕"><img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=700&q=80" alt="咖啡厅"><span>☕ 咖啡厅</span></button>
+                    <button class="place" type="button" data-place="逛街购物 🛍️"><img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80" alt="购物街景" onerror="this.style.display='none'"><span>🛍️ 逛街购物</span></button>
+                    <button class="place" type="button" data-place="打卡甜品店 🍰"><img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=700&q=80" alt="甜品店"><span>🍰 打卡甜品店</span></button>
+                    <button class="place" type="button" data-place="按摩放松 🧖"><img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=700&q=80" alt="水疗放松"><span>🧖 按摩放松</span></button>
+                    <button class="place" type="button" data-place="一起散步 🚶"><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=700&q=80" alt="户外散步"><span>🚶 一起散步</span></button>
+                </div>
+            </div>
+
+            <label for="customPlace">想去的其他地方？也可以自己添加</label>
+            <input type="text" id="customPlace" placeholder="例如：某某餐厅、花园、手工工作室">
+            <p class="muted">多个自定义地点可以用逗号分开。</p>
+            <div class="selected-box">
+                <strong>💜 已选择的约会活动</strong>
+                <div id="selectedPlaces">还没有选择活动</div>
+            </div>
+            <button class="next-btn" onclick="nextStep(3)">下一步 →</button>
+            <button class="back-btn" onclick="prevStep(3)">← 上一步</button>
+        </div>
+
+        <div class="form-step" id="step4">
+            <div class="section-icon">💌</div>
+            <h2>最后，留一句话给我吧</h2>
+            <p class="muted">任何想说的话都可以哦</p>
+            <textarea id="message" placeholder="亲爱的，我想告诉你..."></textarea>
+            <div class="preview" id="preview"></div>
+            <button class="next-btn" id="submitButton" onclick="submitDate()">提交我的约会申请 💜</button>
+            <button class="back-btn" onclick="prevStep(4)">← 上一步</button>
+        </div>
+    </div>
+</section>
+
+<!-- 成功页面 -->
+<section id="success" class="page">
+    <div class="luxury-card success-card">
+        <div class="success-icon">💐</div>
+        <div class="eyebrow">APPLICATION RECEIVED</div>
+        <h1>申请成功！</h1>
+        <p class="description">你的约会申请已经送到我这里了。<br>期待和你见面的那一天！♡</p>
+        <div id="successDetails" class="preview"></div>
+        <p class="gold-text">YOU ARE MY FAVORITE PERSON ♡</p>
+    </div>
+</section>
+
+<!-- 管理员后台：先登入，再读取云端资料 -->
+<section id="admin" class="page">
+    <div class="luxury-card form-card admin-card">
+        <div class="eyebrow">PRIVATE COLLECTION</div>
+        <h1>男朋友专属后台 👑</h1>
+        <p class="description">只有管理员登入后才能查看约会申请</p>
+
+        <div id="adminLogin">
+            <label for="adminEmail">管理员 Email</label>
+            <input type="email" id="adminEmail" autocomplete="username" placeholder="输入你的管理员 Email">
+            <label for="adminPassword">管理员密码</label>
+            <input type="password" id="adminPassword" autocomplete="current-password" placeholder="输入管理员密码">
+            <button class="next-btn" id="loginButton" onclick="adminLogin()">登入管理员后台</button>
+        </div>
+
+        <div id="adminPanel" hidden>
+            <div class="admin-toolbar">
+                <span id="adminWelcome"></span>
+                <button class="logout-btn" onclick="adminLogout()">登出</button>
+            </div>
+            <div id="adminContent"><p>正在读取申请...</p></div>
+            <button class="refresh-btn" onclick="loadAdmin()">↻ 刷新申请</button>
+        </div>
+
+        <button class="back-btn" onclick="showPage('welcome')">返回首页</button>
+    </div>
+</section>
+
+<!-- 自定义弹窗 -->
+<div class="modal-overlay" id="customModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+        <div class="modal-decoration">✧ ♡ ✧</div>
+        <div class="modal-icon" id="modalIcon">💜</div>
+        <h2 id="modalTitle">温馨提示</h2>
+        <p id="modalMessage">请填写完整资料哦！</p>
+        <div class="modal-buttons">
+            <button class="modal-cancel" id="modalCancel">再想想</button>
+            <button class="modal-confirm" id="modalConfirm">好的 💗</button>
+        </div>
+    </div>
+</div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>
