@@ -5,7 +5,7 @@ import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js
   Replace these two values with your own Supabase Project URL and Publishable key.
   Never put a Secret key or database password in this file.
 */
-const SUPABASE_URL = "https://xbudimnnalrrbwkpxepn.supabase.co/auth/v1/.well-known/jwks.json";
+const SUPABASE_URL = "https://xbudimnnalrrbwkpxepn.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_2VOT-My3MJfBgKlbD9Preg_g7Fad_TO";
 const ADMIN_EMAIL = "irenetan050904@gmail.com";
 
@@ -15,9 +15,10 @@ const supabaseConfigured =
     SUPABASE_PUBLISHABLE_KEY.startsWith("sb_publishable_") &&
     !SUPABASE_PUBLISHABLE_KEY.includes("PASTE_");
 
-const supabase = supabaseConfigured
-    ? createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
-    : null;
+const supabase = createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
 
 const noButton = document.getElementById("noButton");
 let selectedPlaces = [];
