@@ -150,3 +150,34 @@ textarea { min-height:110px; resize:vertical; line-height:1.7; }
     .place span { font-size:11px; }
     .modal-card { padding:25px 17px; }
 }
+
+/* Mobile: Fix Date and Time input overflow */
+#date,
+#time {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.form-step {
+    min-width: 0;
+}
+
+.form-step input[type="date"],
+.form-step input[type="time"] {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+@media (max-width: 600px) {
+    #date,
+    #time {
+        width: 100%;
+        max-width: 100%;
+        font-size: 14px;
+    }
+}
